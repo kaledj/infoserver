@@ -1,8 +1,8 @@
 # Lab 7
-* David Kale
+### David Kale
 
 ## Part 1
-Modifying the information such that F2 causes "Hello, world!" to be displayed.
+Modifying the information server such that F2 causes "Hello, world!" to be displayed.
 
 ### Solution
 1. Add entry for new function in /usr/src/servers/is/dmp.c
@@ -17,6 +17,9 @@ root@~# diff -r /usr/src /usr/src-orig/
 diff -r /usr/src/servers/is/dmp.c /usr/src-orig/servers/is/dmp.c
 20d19
 <     { F2,   hello_dmp, "Say hello" },
+```
+
+```
 diff -r /usr/src/servers/is/dmp_kernel.c /usr/src-orig/servers/is/dmp_kernel.c
 60,65d59
 < void hello_dmp()
@@ -25,6 +28,9 @@ diff -r /usr/src/servers/is/dmp_kernel.c /usr/src-orig/servers/is/dmp_kernel.c
 < }
 <
 <
+```
+
+```
 diff -r /usr/src/servers/is/proto.h /usr/src-orig/servers/is/proto.h
 7d6
 < void hello_dmp();
@@ -40,7 +46,7 @@ of messages to be displayed.
 ### Solution
 1. Repeat steps from part 1 to add the new function, msgtab_dmp, including adding an implementation
   in /usr/src/kernel/dmp_kernel.c
-2. Define the message table stucture to include/minix/param.h
+2. Define the message table stucture in include/minix/param.h
 3. #define a new getter function in inlude/minix/syslib.h for accessing the table
 4. Add a case for the new getter in kernel/system/do_getinfo.c
 5. Declare the table as a global variable in kernel/glo.h, and declare the variable in kernel/usermapped_data.c
